@@ -21,6 +21,6 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<Review> addReview(@RequestBody Map<String, String> payload) {
-        return new ResponseEntity<>(service.addReview(payload.get("body")), HttpStatus.OK);
+        return new ResponseEntity<>(service.addReview(payload.get("body"), payload.get("imdbId")), HttpStatus.OK);
     }
 }
