@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author elenaklimovich
+ * @since 25.05.2023
+ */
 @Service
 public class ReviewService {
 
@@ -20,6 +24,13 @@ public class ReviewService {
     @Autowired
     private MongoTemplate template;
 
+    /**
+     * Create new review and update related {@link Movie} by adding to the attribute 'reviews' new object
+     *
+     * @param body   - text description of the reviewed movie
+     * @param imdbId - identifier of the movie in <a href="https://www.imdb.com">IMDB</a>
+     * @return created object {@link Review}
+     */
     public Review addReview(String body, String imdbId) {
         Review review = new Review(body, LocalDateTime.now(), LocalDateTime.now());
         repository.insert(review);
